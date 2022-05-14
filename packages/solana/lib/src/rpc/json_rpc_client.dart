@@ -69,7 +69,11 @@ class JsonRpcClient {
       Uri.parse(_url),
       headers: _defaultHeaders,
       body: body,
-    );
+    )    ).timeout(
+      Duration(seconds :111),
+      onTimeout: () {
+        throw TimeoutException('request timed out');
+      };
     // Handle the response
     if (response.statusCode == 200) {
       return _JsonRpcResponse._parse(json.decode(response.body));
