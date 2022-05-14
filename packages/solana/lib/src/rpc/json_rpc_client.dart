@@ -65,14 +65,14 @@ class JsonRpcClient {
   ) async {
     final body = json.encode(request.toJson());
     // Perform the POST request
-    final Response response = await post(
+     final Response response = await post(
       Uri.parse(_url),
       headers: _defaultHeaders,
-      body: body)).timeout(
-      Duration(seconds :111)),
+      body: body).timeout(
+      Duration(seconds :111),
       onTimeout: () {
         throw TimeoutException('request timed out');
-      };
+      });
     // Handle the response
     if (response.statusCode == 200) {
       return _JsonRpcResponse._parse(json.decode(response.body));
