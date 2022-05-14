@@ -68,9 +68,8 @@ class JsonRpcClient {
     final Response response = await post(
       Uri.parse(_url),
       headers: _defaultHeaders,
-      body: body,
-    )    ).timeout(
-      Duration(seconds :111),
+      body: body)).timeout(
+      Duration(seconds :111)),
       onTimeout: () {
         throw TimeoutException('request timed out');
       };
