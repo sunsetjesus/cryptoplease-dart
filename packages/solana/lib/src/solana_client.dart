@@ -7,9 +7,9 @@ class SolanaClient {
   SolanaClient({
     required Uri rpcUrl,
     required Uri websocketUrl,
-    //Duration timeout = const Duration(seconds: 30),
+    Duration timeout = const Duration(seconds: 30),
   })  : rpcClient = RpcClient(rpcUrl.toString()),
-        //_timeout = timeout,
+        _timeout = timeout,
         _websocketUrl = websocketUrl;
 
   final RpcClient rpcClient;
